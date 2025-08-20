@@ -10,6 +10,20 @@ const io = new Server(httpServer)
 io.on('connection', function (socket) {
   console.log('a user connected')
 
+
+setTimeout(() => {
+    socket.send( 'Welcome to the Socket.IO server!')
+  }, 1000)
+
+
+
+
+
+
+
+
+
+
   socket.on('disconnect', function () {
     console.log('user disconnected')
   })
