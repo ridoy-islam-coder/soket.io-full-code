@@ -16,16 +16,19 @@ io.on('connection', function (socket) {
 //   }, 1000)
 
 
-setInterval(function () {
+// setInterval(function () {
 
-    let d=new Date()
-    let t=d.getTime()
-    socket.send(t)
-  }, 1000)
-
-
+//     let d=new Date()
+//     let t=d.getTime()
+//     socket.emit("myEvent",t)
+//   }, 500)
 
 
+
+socket.on('message', function (msg) {
+    console.log('message: ' + msg)
+    io.emit('message', msg)
+  })
 
 
 
