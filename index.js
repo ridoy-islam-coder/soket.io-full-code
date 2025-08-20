@@ -11,12 +11,17 @@ io.on('connection', function (socket) {
   console.log('a user connected')
 
 
-setTimeout(() => {
-    socket.send( 'Welcome to the Socket.IO server!')
+// setTimeout(() => {
+//     socket.send( 'Welcome to the Socket.IO server!')
+//   }, 1000)
+
+
+setInterval(function () {
+
+    let d=new Date()
+    let t=d.getTime()
+    socket.send(t)
   }, 1000)
-
-
-
 
 
 

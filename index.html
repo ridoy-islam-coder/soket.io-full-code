@@ -8,18 +8,20 @@
 <body>
     
 
-
+<h1 id="myTime"></h1>
 
 
  <script src="/socket.io/socket.io.js"></script>
 
     <script>
         const socket = io();
-        socket.on('message',function(msg) {
-           document.write(msg)
+        // socket.on('message',function(msg) {
+        //    document.write(msg)
+        // });
+  
+        socket.on('time', function(time) {
+            document.getElementById('myTime').innerHTML = time;
         });
-
-
     
         
 
