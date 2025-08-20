@@ -1,36 +1,24 @@
- import express from 'express'
+const express = require('express')
 const app = express()
-import http from 'http'
-const port = 4000;
-const createServer = http.createServer(app)
+const port = 3000
+const { createServer } = require('http')
+const httpServer = createServer(app)
 
+const { Server } = require('socket.io')
+const io = new Server(httpServer)
 
-import { Server } from 'socket.io'
-const io = new Server(createServer)
+io.on('connection', function (socket) {
+  console.log('a user connected')
 
-
-app.get('/', (req, res) => {
-  res.sendFile(__dirname+ '/index.html')
+  socket.on('disconnect', function () {
+    console.log('user disconnected')
+  })
 })
 
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/index.html')
+})
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-createServer.listen(port, () => {
+httpServer.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
