@@ -5,6 +5,10 @@ const port = 4000;
 const createServer = http.createServer(app)
 
 
+import { Server } from 'socket.io'
+const io = new Server(createServer)
+
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname+ '/index.html')
 })
