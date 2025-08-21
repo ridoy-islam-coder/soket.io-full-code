@@ -25,6 +25,14 @@ io.on('connection', function (socket) {
 
 
 
+
+
+io.sockets.emit('hi', 'Hello everyone!')
+
+
+
+
+
 socket.on('message', function (msg) {
     console.log('message: ' + msg)
     io.emit('message', msg)

@@ -28,11 +28,37 @@
         // });
     
 
-  function send() {
-    const input = document.getElementById("myInput").value;
-    socket.emit('message', input);
-    alert("Message sent: " + input);
-  }
+
+
+
+  // function send() {
+  //   const input = document.getElementById("myInput").value;
+  //   socket.emit('message', input);
+  //   alert("Message sent: " + input);
+  // }
+
+
+
+ socket.on('hi', function(msg) {
+     const input = document.getElementById("myTime").innerHTML = msg;
+  });
+
+
+
+  // socket.on('hi', function(msg) {
+  //   document.write(msg);
+  // });
+
+  // socket.on('myEvent', function(time) {
+  //   document.getElementById('myTime').innerHTML = time;
+  // });
+
+
+
+
+
+
+
 
 
         
