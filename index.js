@@ -28,20 +28,20 @@ const io = new Server(httpServer)
 
 
 
-let buyNme=io.of('/buy');
+// let buyNme=io.of('/buy');
 
-buyNme.on('connection', function (socket) {
-  buyNme.emit('hi', 'Hello from the buy namespace!');
-})
-
-
+// buyNme.on('connection', function (socket) {
+//   buyNme.emit('hi', 'Hello from the buy namespace!');
+// })
 
 
 
-let sellNme=io.of('/sell');
-sellNme.on('connection', function (socket) {
-  sellNme.emit('hi', 'Hello from the sell namespace!');
-})
+
+
+// let sellNme=io.of('/sell');
+// sellNme.on('connection', function (socket) {
+//   sellNme.emit('hi', 'Hello from the sell namespace!');
+// })
 
 
 
@@ -64,13 +64,17 @@ sellNme.on('connection', function (socket) {
 // io.sockets.emit('hi', 'Hello everyone!')
 
 
+io.on('connection', function (socket) {
+socket.on('chat', function (msg) {
+io.emit('megssage', msg);
+
+  })
+
+
+}) 
 
 
 
-// socket.on('message', function (msg) {
-//     console.log('message: ' + msg)
-//     io.emit('message', msg)
-//   })
 
 
 

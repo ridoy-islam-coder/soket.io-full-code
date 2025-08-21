@@ -17,7 +17,7 @@
  <script src="/socket.io/socket.io.js"></script>
 
     <script>
-        const socket = io('/buy');
+        const socket = io();
         // socket.on('message',function(msg) {
         //    document.write(msg)
         // });
@@ -31,15 +31,19 @@
 
 
 
-  // function send() {
-  //   const input = document.getElementById("myInput").value;
-  //   socket.emit('message', input);
-  //   alert("Message sent: " + input);
-  // }
+  function send() {
+    const input = document.getElementById("myInput").value;
+    socket.emit('chat', input);
+    alert("Message sent: " + input);
+  }
 
- socket.on('hi', function(msg) {
-     const input = document.getElementById("myTime").innerHTML = msg;
+  socket.on('megssage', function(msg) {
+    document.getElementById("myTime").innerHTML = msg;
   });
+
+//  socket.on('hi', function(msg) {
+//      const input = document.getElementById("myTime").innerHTML = msg;
+//   });
 
 
 
