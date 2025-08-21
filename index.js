@@ -7,8 +7,8 @@ const httpServer = createServer(app)
 const { Server } = require('socket.io')
 const io = new Server(httpServer)
 
-io.on('connection', function (socket) {
-  console.log('a user connected')
+// io.on('connection', function (socket) {
+//   console.log('a user connected')
 
 
 // setTimeout(() => {
@@ -27,23 +27,57 @@ io.on('connection', function (socket) {
 
 
 
-io.sockets.emit('hi', 'Hello everyone!')
 
+let buyNme=io.of('/buy');
 
-
-
-
-socket.on('message', function (msg) {
-    console.log('message: ' + msg)
-    io.emit('message', msg)
-  })
-
-
-
-  socket.on('disconnect', function () {
-    console.log('user disconnected')
-  })
+buyNme.on('connection', function (socket) {
+  buyNme.emit('hi', 'Hello from the buy namespace!');
 })
+
+
+
+
+
+let sellNme=io.of('/sell');
+sellNme.on('connection', function (socket) {
+  sellNme.emit('hi', 'Hello from the sell namespace!');
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// io.sockets.emit('hi', 'Hello everyone!')
+
+
+
+
+
+// socket.on('message', function (msg) {
+//     console.log('message: ' + msg)
+//     io.emit('message', msg)
+//   })
+
+
+
+//   socket.on('disconnect', function () {
+//     console.log('user disconnected')
+//   })
+// })
 
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html')
