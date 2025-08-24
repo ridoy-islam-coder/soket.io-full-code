@@ -7,9 +7,10 @@
 </head>
 <body>
 
+    <h1 id="msg"></h1>
 
-    <input type="text" id="msg">
-    <button onclick="sendmsg()">onclick</button>
+    <!-- <input type="text" id="msg">
+    <button onclick="sendmsg()">onclick</button> -->
 
     <script src="/socket.io/socket.io.js">    </script>
         
@@ -25,10 +26,14 @@
 //    socket.send(msg)
 //     }
 
-    socket.on('muEvant',function(data){
-        alert(data)
-    })
+    // socket.on('muEvant',function(data){
+    //     alert(data)
+    // })
 
+
+      socket.on('muEvant',function(data){
+        document.getElementById("msg").innerHTML = data;
+      })
 
 
 

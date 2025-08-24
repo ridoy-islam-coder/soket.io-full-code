@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
 
 io.on('connection',function(socket){
-  io.socket.emit('muEvant','this is custom event');
+  io.sockets.emit('muEvant','this is custom event');
 })
 
 io.on('connection', (socket) => {
@@ -34,7 +34,8 @@ io.on('connection', (socket) => {
 
 
 
-
+socket.join('room1');
+io.sockets.in('room1').emit('muEvant','this is custom event to room1');
 
 
 
