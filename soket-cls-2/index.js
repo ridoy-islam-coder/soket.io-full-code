@@ -35,7 +35,8 @@ io.on('connection', (socket) => {
 
 
 socket.join('room1');
-io.sockets.in('room1').emit('muEvant','this is custom event to room1');
+let sigleRoom = io.sockets.adapter.rooms.get('room1').size
+io.sockets.in('room1').emit('muEvant','this is custom event to room1='+sigleRoom);
 
 
 
