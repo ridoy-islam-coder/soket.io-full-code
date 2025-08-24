@@ -14,20 +14,21 @@ app.get('/', (req, res) => {
 
 
 
-
-
 io.on('connection', (socket) => {
   console.log('a user connected');
 
 
 
+  
 
+//  setTimeout(() => {
+//     socket.send( 'Hello from server after 5 seconds!');
+//   }, 5000);
 
- setTimeout(() => {
-    socket.send( 'Hello from server after 5 seconds!');
-  }, 5000);
-
-
+socket.on('message', (msg) => {
+    console.log('message: ' + msg);
+    
+    })
 
 
   socket.on('disconnect', () => {

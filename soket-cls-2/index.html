@@ -8,13 +8,24 @@
 <body>
 
 
+    <input type="text" id="msg">
+    <button onclick="sendmsg()">onclick</button>
+
     <script src="/socket.io/socket.io.js">    </script>
         
    <script>
     let socket = io();     
-    socket.on("message",(msg)=>{
-       document.write(msg)
-    })
+    // socket.on("message",(msg)=>{
+    //    document.write(msg)
+    // })
+    
+ function sendmsg(){
+    let msg = document.getElementById("msg").value;
+   alert(msg)
+   socket.send(msg)
+    }
+
+
 
 
     </script>
