@@ -20,6 +20,16 @@ io.on('connection', (socket) => {
   console.log('a user connected');
 
 
+
+
+
+ setTimeout(() => {
+    socket.send( 'Hello from server after 5 seconds!');
+  }, 5000);
+
+
+
+
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
