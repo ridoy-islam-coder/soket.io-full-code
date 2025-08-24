@@ -19,11 +19,15 @@
     //    document.write(msg)
     // })
     
- function sendmsg(){
-    let msg = document.getElementById("msg").value;
-   alert(msg)
-   socket.send(msg)
-    }
+//  function sendmsg(){
+//     let msg = document.getElementById("msg").value;
+//    alert(msg)
+//    socket.send(msg)
+//     }
+
+    socket.on('muEvant',function(data){
+        alert(data)
+    })
 
 
 

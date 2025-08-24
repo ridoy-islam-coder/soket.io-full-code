@@ -12,7 +12,9 @@ app.get('/', (req, res) => {
 });
 
 
-
+io.on('connection',function(socket){
+  io.socket.emit('muEvant','this is custom event');
+})
 
 io.on('connection', (socket) => {
   console.log('a user connected');
@@ -25,10 +27,18 @@ io.on('connection', (socket) => {
 //     socket.send( 'Hello from server after 5 seconds!');
 //   }, 5000);
 
-socket.on('message', (msg) => {
-    console.log('message: ' + msg);
+// socket.on('message', (msg) => {
+//     console.log('message: ' + msg);
     
-    })
+//     })
+
+
+
+
+
+
+
+
 
 
   socket.on('disconnect', () => {
