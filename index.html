@@ -73,7 +73,7 @@
     <h1>Socket.io Chat</h1>
 
     <input type="text" id="myInput" placeholder="Type your message...">
-    <button onclick="send()">Send</button>
+    <button onclick="sendMsg()">Send</button>
 
     <h3 id="myTime"></h3>
 </div>
@@ -83,15 +83,40 @@
 <script>
     const socket = io();
 
-    function send() {
-        const input = document.getElementById("myInput").value;
-        socket.emit('chat', input);
-        document.getElementById("myInput").value = "";
-    }
+function sendMsg() {
+        const myInput = document.getElementById("myInput").value;
+        socket.emit('chat', myInput);
 
-    socket.on('megssage', function(msg) {
-        document.getElementById("myTime").innerHTML = msg;
+    
+    }
+    
+    socket.on('myEvent', function (myInput) {
+        document.getElementById("myTime").innerHTML = myInput;
+        let 
     });
+
+
+
+      socket.on('myEvent', function (myInput) {
+       let listItem= document.createElement("myTime");
+       listItem.textContent = myInput;
+       let megHis= document.getElementById("myTime");
+        megHis.appendChild(listItem);
+    });
+
+
+
+
+
+    // function send() {
+    //     const input = document.getElementById("myInput").value;
+    //     socket.emit('chat', input);
+    //     document.getElementById("myInput").value = "";
+    // }
+
+    // socket.on('megssage', function(msg) {
+    //     document.getElementById("myTime").innerHTML = msg;
+    // });
 </script>
 
 </body>

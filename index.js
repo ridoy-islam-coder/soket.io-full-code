@@ -65,13 +65,15 @@ const io = new Server(httpServer)
 
 
 io.on('connection', function (socket) {
-socket.on('chat', function (msg) {
-io.emit('megssage', msg);
+socket.on('chat', function (myInput) {
+ socket.emit('myEvent', myInput)
+})
+
+
 
   })
 
 
-}) 
 
 
 
