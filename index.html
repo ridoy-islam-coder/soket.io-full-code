@@ -3,78 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My fist  soket.io oky</title>
+    <title>Socket.io Chat</title>
+
+    <style>
+        body {
+            background: #0f172a;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+        }
+
+        #chatBox {
+            background: #1e293b;
+            padding: 20px;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #38bdf8;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            background: #06b6d4;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #0891b2;
+        }
+
+        #myTime {
+            margin-top: 15px;
+            font-size: 18px;
+            text-align: center;
+            padding: 10px;
+            background: #334155;
+            border-radius: 6px;
+        }
+    </style>
 </head>
 <body>
-    
 
-<h1 id="myTime"></h1>
+<div id="chatBox">
+    <h1>Socket.io Chat</h1>
 
+    <input type="text" id="myInput" placeholder="Type your message...">
+    <button onclick="send()">Send</button>
 
-<input type="text" id="myInput" placeholder="Type something...">
-<button id="myButton" onclick="send()">Send</button>
+    <h3 id="myTime"></h3>
+</div>
 
- <script src="/socket.io/socket.io.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 
-    <script>
-        const socket = io();
-        // socket.on('message',function(msg) {
-        //    document.write(msg)
-        // });
-  
-        // socket.on('myEvent', function(time) {
-        //       document.getElementById('myTime').innerHTML = "";
-        //     document.getElementById('myTime').innerHTML = time;
-        // });
-    
+<script>
+    const socket = io();
 
+    function send() {
+        const input = document.getElementById("myInput").value;
+        socket.emit('chat', input);
+        document.getElementById("myInput").value = "";
+    }
 
-
-
-  function send() {
-    const input = document.getElementById("myInput").value;
-    socket.emit('chat', input);
-    alert("Message sent: " + input);
-  }
-
-  socket.on('megssage', function(msg) {
-    document.getElementById("myTime").innerHTML = msg;
-  });
-
-//  socket.on('hi', function(msg) {
-//      const input = document.getElementById("myTime").innerHTML = msg;
-//   });
-
-
-
-
-
-
-
-
-  // socket.on('hi', function(msg) {
-  //   document.write(msg);
-  // });
-
-  // socket.on('myEvent', function(time) {
-  //   document.getElementById('myTime').innerHTML = time;
-  // });
-
-
-
-
-
-
-
-
-
-        
-
- </script>
-
- </script>
-
-
+    socket.on('megssage', function(msg) {
+        document.getElementById("myTime").innerHTML = msg;
+    });
+</script>
 
 </body>
 </html>
